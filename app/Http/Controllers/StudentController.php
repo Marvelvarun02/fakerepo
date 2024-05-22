@@ -56,9 +56,21 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('success', 'Student has been updated successfully');
     }
 
-    public function destroy(Student $student)
-    {
+    // public function destroy(Student $student)
+    // {
+    //     $student->delete();
+    //     return redirect()->route('students.index')->with('success', 'Student has been deleted successfully');
+    // }
+    public function destroy($id)
+{
+    $student = Student::find($id);
+
+    if ($student) {
         $student->delete();
-        return redirect()->route('students.index')->with('success', 'Student has been deleted successfully');
+        return response()->json(['success' => true, 'message' => 'Student deleted successfully.']);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Student not found.']);
     }
+}
+
 }
