@@ -29,6 +29,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name"><strong>Student Name:</strong></label>
+                                <!-- $student -->
                                 <input type="text" name="name" class="form-control" value="{{ $student->name }}" placeholder="Student name">
                                 @error('name')
                                 <div class="text-danger">{{ $message }}</div>
